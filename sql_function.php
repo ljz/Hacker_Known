@@ -39,54 +39,43 @@ public	function login($nickname ,$password)
 			}
 		}
 	}
-}
-?>
-<?
-/*	function logout()
-	{
-
-
-
-
-
-
-
-	}
-
-
-
-
-
-*/
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-
-
-
 
 	//注册函数，传惨依次为邮箱，密码，密码,成功返回1，否则返回0.
-	function regestion($email,$nickname,$password1,$password2,$sex,$area)
+	function registion($email,$nickname,$password1,$password2,$sex,$area)
 	{
-
-
-		$con = getDatabaseHandle();
+		$con =$this->getDatabaseHandle();
 		mysql_select_db("Hacker_Known", $con);
-		//	$result = mysql_query("SELECT Password FROM HK_User_Info where NickName='".$NickName."'"); 	
+		mysql_query("set names 'GBK'");
+		 $result = mysql_query("SELECT UID  FROM  HK_User_Info where NickName = '".$email."' ",$con);
+		 if(mysql_num_rows($result))
+		{
+		echo"<script language=javascript>";
+           	echo"alert('该邮箱已经存在');" ;
+               echo 'location.href="regist.php"';
+              echo "</script>";
+		/*	 echo"<script language=javascript>";
+             		 echo "alert('该邮箱已经存在!');" ;
+             		 echo'location.href="regist.php"';
+            		 echo"</script>";	*/
+			return 0;
+		}
+		else	
+		{
+		 mysql_query("INSERT INTO  HK_User_Info (NickName,Email,Password,Sex,Area)VALUES('".$nickname."','".$email."','".$password1."','".$sex."','".$area."')",$con);
+		return 1;
+		}
+//		echo "insert ok";
+//		return 1;
+/*		$if(mysql_query("INSERT INTO  HK_User_Info (NickName,Email,Password,Sex,Area)VALUES('".$nickname.",'".$email."','".$password1."','".$sex."','".$area."')",$con);
 
-*/		//判断邮箱格式
-//		$mode="/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
-/*		if(!preg_match($mode,$email,$content))
+	{
+		echo " 注册失败!<br/>";
+		return 0;
+	}*/
+
+		//判断邮箱格式
+	//	$mode="/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
+	/*	if(!preg_match($mode,$email,$content))
 		{
 			alert("输入的邮箱格式不正确，请从新输入");
 			return 0;
@@ -105,8 +94,8 @@ public	function login($nickname ,$password)
 			return 0;
 		}
 
-		//判断密码是否一致，长度是否为8
-		if($password1 != $password2 || strlen($password1)!=8)
+		//判断密码是否一致，长度>6
+		if($password1 != $password2 || strlen($password1)>6)
 		{
 			alert("密码不一致,或者长度不为8");
 			return 0;	
@@ -140,7 +129,8 @@ public	function login($nickname ,$password)
 			return 0;
 		}		
 		mysql_close($con);
+*/
 	}
 }
-*/
+
 ?>
