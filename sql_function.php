@@ -46,7 +46,7 @@ public	function login($nickname ,$password)
 		$con =$this->getDatabaseHandle();
 		mysql_select_db("Hacker_Known", $con);
 		mysql_query("set names 'GBK'");
-		 $result = mysql_query("SELECT UID  FROM  HK_User_Info where NickName = '".$email."' ",$con);
+		 $result = mysql_query("SELECT UID  FROM  HK_User_Info where Email = '".$email."' ",$con);
 		 if(mysql_num_rows($result))
 		{
 		echo"<script language=javascript>";
