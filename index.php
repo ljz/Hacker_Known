@@ -7,8 +7,10 @@
   
             <?php if(isset($_SESSION["YES"])){ ?>  
                   You are loged in ! <br/>  
-                <ul> 
+                <ul>
+			 
 		 <li><a href="goout.php">Logged out</a></li> 
+		 <li><a href="profile.php">profile</a></li> 
 		</ul>
             <?php }else{ ?>  
                   You are not logged in , now !  
