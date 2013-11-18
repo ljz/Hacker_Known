@@ -15,15 +15,18 @@ public	function getDatabaseHandle()
 		{
 			return $con;
 		}
+
 	}
 	//登录函数,两个参数依次为昵称和密码，登录成功返回1，否则返回1
-public	function login($nickname ,$password)
+public	function login($email ,$password)
 	{
 
 		$password = md5($password);
 		$con = $this->getDatabaseHandle();
 		mysql_select_db("Hacker_Known", $con);
-		$result = mysql_query("SELECT Password  FROM  HK_User_Info where NickName = '".$nickname."' ",$con);
+		echo $email;
+		echo $password;
+		$result = mysql_query("SELECT Password  FROM  HK_User_Info where Email = '".$email."' ",$con);
 		while($row = mysql_fetch_array($result))
 		{
 		
@@ -39,6 +42,30 @@ public	function login($nickname ,$password)
 			}
 		}
 	}
+// 查找函数
+
+
+/* function selection($db ,$table,$query)
+        {
+
+                $password = md5($password);
+                $con = $this->getDatabaseHandle();
+                mysql_select_db($db, $con);
+               // $result = mysql_query("SELECT Password  FROM  HK_User_Info where NickName = '".$nickname."' ",$con);
+               $result = mysql_query($query);
+		 while($row = mysql_fetch_array($result))
+                {
+					
+		
+		
+
+
+
+                }
+        }
+
+*/
+
 
 	//注册函数，传惨依次为邮箱，密码，密码,成功返回1，否则返回0.
 	function registion($email,$nickname,$password1,$password2,$sex,$area)

@@ -5,7 +5,7 @@
      </head>  
       <body>  
   
-            <?php if(isset($_SESSION["YES"])){ ?>  
+            <?php if(isset($_SESSION["EMAIL"])){ ?>  
                   You are loged in ! <br/>  
                 <ul>
 			 

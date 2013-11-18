@@ -3,11 +3,11 @@ include "sql_function.php";
 $mysql_function = new sql_function;
 session_start();
 if(count($_POST)>0) 
-	if(isset($_POST["nickname"])&&isset($_POST["password"])){  
-		if(  $mysql_function->login( $_POST["nickname"],$_POST["password"] ) )
+	if(isset($_POST["email"])&&isset($_POST["password"])){  
+		if(  $mysql_function->login( $_POST["email"],$_POST["password"] ) )
 		{ 
-			$_SESSION["YES"] = false ;  
-			$host = $_SERVER["HTTP_HOST"];  
+			$_SESSION["EMAIL"] = $_POST["email"];  
+			$host = $_SERVER["HTTP_HOST"];
 			$path = rtrim(dirname($_SERVER["PHP_SELF"])) ;  
 			header("Location:http://$host$path/index.php");  
 			exit;  
@@ -28,8 +28,8 @@ if(count($_POST)>0)
 <form method=post action="<?php echo $_SERVER["PHP_SELF"] ?>">
 <table>
 <tr>
-<td>昵称</td>
-<td><input type=text name=nickname value="<?php echo $_POST["nickname"] ?>"   ><br/></td>
+<td>邮箱</td>
+<td><input type=text name=email><br/></td>
 </tr>
 <tr>
 <td>密码</td>

@@ -25,15 +25,14 @@
     </div>
     <div class="tabList" id="tabList1">
         <div class="one block">
-	<form id="BasicForm" class="AutoCommitJSONForm" action="/action/profile/update_basic_info" method="POST" style="display: block;">
-<input type="hidden" name="user_code" value="a91ohvMoa6n3r9LlIXJHoCM5jU2LxWc3foRYS7Fs">
+	<form  action=profile_func.php"" method="POST" style="display: block;">
 <table>
 	<tbody>
 		
 	 <tr>
                 <th>头像</th>
                 <td>
-                     <!--img src= ?/var/www/test.jpg?>"> </img-->
+                     <img src="img/head.JPG" width=110 height=120>
                </td>
         </tr>
 
@@ -41,7 +40,26 @@
 	<tr>
 		<th>邮箱</th>		
 		<td>
-			<? echo $email=test; ?>
+			<?/*
+			$con = mysql_connect("localhost","root","1qaz2wsx");
+                if (!$con)
+                {
+                        die('Could not connect: ' . mysql_error());
+                        return 0;
+                }
+                else
+                {
+                        return $con;
+                }
+*/
+		// mysql_select_db("Hacker_Known", $con);
+               // $result = mysql_query("SELECT Email  FROM  HK_User_Info where NickName = '".$_SESSION[]."' ",$con);
+
+
+		//	echo $email= "964697423@qq.com";
+
+
+			?>
 		</td>
 	</tr>
 	<tr>

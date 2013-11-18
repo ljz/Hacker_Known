@@ -12,12 +12,12 @@
 <table>
 <tr>
 <td>邮箱</td>
-<td><input type=text name=email value="<?php echo $_POST["email"] ?>"   ><br/></td>
+<td><input type=text name=email  ><br/></td>
 </tr>
 
 <tr>
 <td>昵称</td>
-<td><input type=text name=nickname value="<?php echo $_POST["nickname"] ?>"   ><br/></td>
+<td><input type=text name=nickname    ><br/></td>
 </tr>
 <tr>
 <td>密码</td>

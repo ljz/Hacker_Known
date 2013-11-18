@@ -1,6 +1,6 @@
 <?
 echo 1;
 session_start();
- $_SESSION["YES"] = null;
+ $_SESSION["EMAIL"] = null;
 header("Location:index.php");
 ?>
