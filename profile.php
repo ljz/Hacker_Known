@@ -1,3 +1,18 @@
+
+<?
+echo "124234";
+include "sql_function.php";
+$mysql_function = new sql_function;
+session_start();
+if($_SESSION["EMAIL"])
+{
+echo "<br/>SESSION=".$_SESSION["EMAIL"];
+$mysql_function->select_all($_SESSION["EMAIL"]);
+echo "<br/>select over";
+}
+?>
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head> 
 <title>完善个人资料</title>

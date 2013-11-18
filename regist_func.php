@@ -12,7 +12,7 @@ $mysql_function = new sql_function;
  {
 	 if($mysql_function->registion($_POST["email"],$_POST["nickname"],md5($_POST["password1"]),$_POST["password2"],$_POST["gender"],$_POST["proince"]) )
 	{
-		$uid=$mysql_function->;
+	//	$uid=$mysql_function->;
 /*
 		 $con = mysql_connect("localhost","root","1qaz2wsx");
                 if (!$con)

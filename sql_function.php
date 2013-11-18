@@ -42,29 +42,90 @@ public	function login($email ,$password)
 			}
 		}
 	}
-// 查找函数
 
 
-/* function selection($db ,$table,$query)
-        {
+//查询用户的详情
 
-                $password = md5($password);
-                $con = $this->getDatabaseHandle();
-                mysql_select_db($db, $con);
-               // $result = mysql_query("SELECT Password  FROM  HK_User_Info where NickName = '".$nickname."' ",$con);
-               $result = mysql_query($query);
-		 while($row = mysql_fetch_array($result))
-                {
-					
-		
-		
+public function select_all($email)
+{
+$con = $this->getDatabaseHandle();
+mysql_select_db("Hacker_Known",$con);
+mysql_query("set names 'GBK'");
+$result = mysql_query("SELECT HK_User_Info.UID as Info_UID,  HK_User_Info.Photo as Info_Photo, HK_User_Info.NickName as Info_NickName, HK_User_Info.Email as Info_Email, HK_User_Info.Sex as Info_Sex, HK_User_Info.Birthday as Info_Birthday, HK_User_Info.Area as Info_Area, HK_User_Info.Signature as Info_Signature, HK_User_Job.Job_State  as Job_JobState, HK_User_Job.Work_Years as Job_workyear, HK_User_Job.Company as Job_Company, HK_User_Job.Job_Title as Job_JobTitle,HK_User_Cont.Email as Cont_Email,HK_User_Cont.Phone as Cont_Phone,HK_User_Cont.QQ as Cont_QQ,HK_User_Cont.Website as Cont_Website,HK_User_Point.Point as Point_Point,HK_User_Tech.Tech_Sector as Tech_Tech_Sector,HK_User_Tech.Special_Sector as Tech_Special_Sector    FROM  HK_User_Info ,HK_User_Job ,HK_User_Point,HK_User_Tech ,HK_User_Cont where  HK_User_Info.Email = '".$_SESSION["EMAIL"]."' and  HK_User_Info.UID = HK_User_Job.UID  and HK_User_Info.UID = HK_User_Point.UID and  HK_User_Info.UID = HK_User_Tech.UID and HK_User_Info.UID = HK_User_Cont.UID");// ,HK_User_Job where  HK_User_Info.Email = '".$_SESSION["EMAIL"]."'");// and HK_User_Job.UID = HK_User_Info"); // HK_User_Cont ,HK_User_Point,HK_User_Tech , HK_User_Job   where HK_User_Info.Email = '".$email."' and HK_User_Cont.UID = HK_User_Info.UID and  HK_User_Point.UID = HK_User_Info.UID and HK_User_Tech.UID = HK_User_Info.UID and HK_User_Job.UID = HK_User_Info.UID ",$con);
+echo "<br/>2";
+if(mysql_num_rows($result))
+{
+echo "有内容";
+echo $row["Info_UID"].$row["Info_Phone"].$row["INfo_NickName"];
+echo $row["Password"];
+}
+else
+{
+echo "没内涵";
+}
 
+while($row = mysql_fetch_array($result))
+{
+echo "ID=".$uid = $row["Info_UID"];
+echo "Photo==".$row["Info_Photo"];
+//echo "Password= ".$row["Password"];
+}
 
+}
+/*
 
-                }
-        }
+echo "ID=".$uid = $row["HK_User_Inof.UID"];
+echo "<br/>Photo = ".$row["HK_User_Inof.Photo"];
+echo "<br/>Nickname=".$row["HK_User_Inof.NickName"];
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
 
+echo "<br/>Sex = ".$row["HK_User_Inof.Sex"];
+
+echo "<br/>Jobstat = ".$row["HK_User_Job.Job_State"];
+
+/*
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
+
+echo "<br/>Email = ".$row["HK_User_Inof.Email"];
 */
+
+//}
+/*
+$result_Job = mysql_query("SELECT * FROM HK_User_Job where UID = $uid",$con);
+while($row_Job = mysql_fetch_array($result_Job))
+{
+}
+*/
+//}
+
+
+
+
+
+
+
 
 
 	//注册函数，传惨依次为邮箱，密码，密码,成功返回1，否则返回0.
