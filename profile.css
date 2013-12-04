@@ -1,0 +1,12 @@
+<style type="text/css">
+*{margin:0; padding:0;font-size:12px; }
+body{ padding-top:10px; padding-left:10px;}
+.tab{ border:2px solid #000;height:50px;width:700px;}
+.tab ul{ clear:both; zoom:1;}
+.tab ul:after{ content:""; visibility:hidden; display:block; height:28px; clear:both; width:60px; }
+.tab ul li{ background:blue; color:red; display:inline; float:left; width:180px; height:30px; line-height:30px; text-align:center; }
+.tab ul li.on{ background:yellow; color:#000;}
+.tabList{border:2px solid #000; border-top:none; height:700px; width:700;}
+.tabList .one{ padding:11px;  display:none;}
+.tabList .block{ display:block;}
+</style>

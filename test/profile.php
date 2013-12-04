@@ -1,106 +1,69 @@
-<?
-/*
-include "sql_function.php";
-$mysql_function = new sql_function;
-session_start();
-if($_SESSION["EMAIL"])
-{
-
-	$mysql_function->select_all($_SESSION["EMAIL"]);
-}
-*/
-?>
 <html>
-<head> 
-<title>完善个人资料</title>
-<meta http-equiv="Content-Type" content="text/html ; charset=utf-8" />
-<script type="text/javascript">
-/*function setTab(m,n){
-	var menu = document.getElementById("tab"+ m).getElementsByTagName("li");   //获取标签组合
-	var showDiv = document.getElementById("tabList"+ m).getElementsByTagName("div");    //获取内容组合
-	for( var i=0;i<menu.length;i++){
-		menu[i].className = i==n ?"on":"";
-		showDiv[i].style.display = i==n?"block":"none";
-	}
-}
-</script>
-
-<?
-include "area.html";
-//include "birthday.html";
+<head>
+<title> 个人资料</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="../profile.css" rel="stylesheet" type="text/css" />
+<script src="../profile.js"> </script>
+<?php
+	include "../sql_function.php";
 ?>
-<?
-$Area_elements=explode("-",$mysql_function->Area);//提取地点的各个成分
-$date_elements=explode("-",$mysql_function->Info_Birthday);//提取生日的各个成分
-?>
-
-
-
-<script language="javascript">
-
-function myfunc(){
-	//Window_Load();
-	setup(   '北京' ,'北京','北京');
-	Window_Load();
-}
-//myfunc();
-</script>
 </head>
-
-
-<body onLoad=myfunc()>
-<div class="wid400">
-<div class="tab" id="tab1">
+<body  onLoad=   > 
+<div  id=mytab1 class =tab>
 <ul>
-<li onclick=setTab(1,0) class="on">会员信息</li>
-<li onclick=setTab(1,1)>联系信息</li>
-<li onclick=setTab(1,2)>IT技能</li>
+<li onclick=setTab(1,0)  class=on>BASE_INFO</li>
+<li onclick=setTab(1,1) >CONTACT_INFO</li>
+<li onclick=setTab(1,2) >IT_SKILL</li>
 </ul>
 </div>
-<div class="tabList" id="tabList1">
+
+<div id=mytabList1 class=tabList><!-- include three blocks-->
+ 
 <div class="one block">
-<form  action=profile_func.php"" method="POST" style="display: block;">
+<form action = method="POST" style="display:block;">
 <table>
+
 <tbody>
 <tr>
-<th>头像</th>
+<th>HEADER</th>
 <td>
-<img src="<?echo $mysql_function->Info_Photo ;?>" width=110 height=120>
+<img src="../img/ljz.JPG" width=80 height=85><!--echo $mysql_function-Info_Photo ;width=110 height=120-->
 </td>
 </tr>
 
+<tr>
+<th>EMAIL</th>		
+<td>
+<a>964697423@qq.com</a>
+</td>
+</tr>
 
 <tr>
-<th>邮箱</th>		
+<th>NICK_NAME</th>		
 <td>
-<?echo $mysql_function->Info_Email;?>
+<input type="text" name="nickname" size="20" maxlength="10" class="TEXT" value=guagua> <!-- echo $mysql_function->Info_NickName ?> -->
 </td>
 </tr>
+
 <tr>
-<th>昵称</th>		
+<th>GENDER</th>		
 <td>
-<input type="text" name="nickname" size="20" maxlength="10" class="TEXT" value=<?   echo $mysql_function->Info_NickName ?> >
-<span class="Info" id="name_msg">不能超过10个字</span>
-</td>
-</tr>
-<tr>
-<th>性别</th>		
-<td>
-<input type="radio" name="gender" value="1" checked="<?echo ( $mysql_function->Info_Sex = 1 ? true:false )?>" >男
-<input type="radio" name="gender" value="2" ecked="<?echo ( $mysql_function->Info_Sex = 2 ? true:false )?>">女
+<input type="radio" name="gender" value="1" checked="<?echo ( $mysql_function->Info_Sex = 1 ? true:false )?>" >MAN
+<input type="radio" name="gender" value="2" checked="<?echo ( $mysql_function->Info_Sex = 2 ? true:false )?>">WOMAN
 </td>	
 </tr>
+
 <tr>
-<th>居住地区</th>	
+<th>LOCATION</th>	
 <td>
 <select name="prov" id="s1">
-<option>省份</option>
+<option>PROVINCE</option>
 </select>
 <select name="city" id="s2">
-<option>地级市</option>
+<option>CITY</option>
 </select>
 <select name="county" id="s3">
-<option>市、县级市、县</option>
+<option>COUNTY</option>
 </select>
 </td>
 </tr>
@@ -108,46 +71,44 @@ function myfunc(){
 
 
 <tr>
-<th> 出生年月 </th>
+<th>BIRTHDAY </th>
 <td>
-	 <select id="ddlYear">
-<option>年</option>
- 
+ <select id="ddlYear">
+<option>YEAR</option>
+
 </select>
-
       <select id="ddlMonth">
-<option>月</option>
-
+<option>MONTH</option>
  </select>
-
       <select id="ddlDay">
-<option>日</option>
+<option>DATE</option>
  </select>
-
 </td>
 </tr>
 
 <tr>
-<th>个性签名<br>不超过100字</th>		
+<th>Signature</th>		
 <td><textarea name="signature" style="width:300px;height:100px;" class="TEXT"></textarea></td>    		
 </tr>
+
 <tr>
 <th></th>		
 <!--tr>
 <th></th>		
 <td><input type="checkbox" name="notify" value="1" checked="checked"> 有回复或者关注软件的新闻发布时邮件提醒我 </td>    	
 </tr-->
-<tr><ith colspan="2"></th></tr>
+<tr><th colspan="2"></th></tr>
 <tr class="submit">
 <th></th>
-<td><input type="submit" value="保存修改" class="BUTTON SUBMIT"></td>
+<td><input type="submit" value="SAVE" class="BUTTON SUBMIT"></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 </form>
 
-</div>
-<div class="one" style="display:none">
+</div><!-- end of div blockone-->
 
+<div class=one>
 
 
 
@@ -175,11 +136,11 @@ function myfunc(){
 </tr>
 <tr>
 <th>QQ</th>		
-<td><input type="text" name="qq" size="20" class="TEXT" value=""></td>    		
+<td><input type="text" name="qq" size="20" class="TEXT" value=""></td>    	
 </tr>
 <tr>
 <th>我的其他网站</th>		
-<td><input type="text" name="website" size="40" class="TEXT" value=""></td>    		
+<td><input type="text" name="website" size="40" class="TEXT" value=""></td>    
 </tr>
 <tr><th colspan="2"></th></tr>
 <tr class="submit">
@@ -191,14 +152,10 @@ function myfunc(){
 </tr>
 </tbody></table>
 </form>
+</div><!-- end of div blocktwo-->
 
 
-
-
-</div>
-<div class="one" style="display:none">
-
-
+<div class=one>
 
 
 <form id="SkillForm" class="AutoCommitJSONForm" action="/action/profile/update_skill_info" method="POST" style="display: block;">
@@ -377,11 +334,15 @@ function myfunc(){
 
 
 
-</div>
-</div>
-</div>
+
+
+
+
+
+</div><!-- end of div blockthree-->
+
+
+
+</div><!-- end of div mytabList1-->
 </body>
 </html>
-
-
-

@@ -60,7 +60,7 @@ class sql_function
 		while($row = mysql_fetch_array($result))
 		{
 			$this->Info_UID = $row["Info_UID"];
-		        $this->Info_Photo=$row["Info_Photo"];
+echo 		        $this->Info_Photo=$row["Info_Photo"];
 			$this->Info_NickName=$row["Info_NickName"];
 			$this->Info_Email=$row["Info_Email"];
 			$this->Info_Sex=$row["Info_Sex"];
