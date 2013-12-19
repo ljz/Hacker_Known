@@ -14,7 +14,7 @@ if(count($_POST)>0)
 		}	
 		else
 		{  
-			echo "Something was wrong...";   
+	?><script>alert("something is wrong ! please try again!!"); </script>	<?
 		}  
 	}  
 ?>

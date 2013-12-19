@@ -6,14 +6,15 @@
       <body>  
   
             <?php if(isset($_SESSION["EMAIL"])){ ?>  
-                  You are loged in ! <br/>  
+                <script> alert("success !")</script>  
+
                 <ul>
 			 
 		 <li><a href="goout.php">Logged out</a></li> 
 		 <li><a href="profile.php">profile</a></li> 
 		</ul>
             <?php }else{ ?>  
-                  You are not logged in , now !  
+                <script> alert("something is wrong !!!")</script>  
             <?//php } ?>  
             <br/>  
             <p>Demo</p>  

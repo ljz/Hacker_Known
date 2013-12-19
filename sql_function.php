@@ -24,8 +24,6 @@ class sql_function
 		$password = md5($password);
 		$con = $this->getDatabaseHandle();
 		mysql_select_db("Hacker_Known", $con);
-		echo $email;
-		echo $password;
 		$result = mysql_query("SELECT Password  FROM  HK_User_Info where Email = '".$email."' ",$con);
 		while($row = mysql_fetch_array($result))
 		{
@@ -55,17 +53,18 @@ class sql_function
 	{
 		$con = $this->getDatabaseHandle();
 		mysql_select_db("Hacker_Known",$con);
-		mysql_query("set names 'GBK'");
-		$result = mysql_query("SELECT HK_User_Info.UID as Info_UID,  HK_User_Info.Photo as Info_Photo, HK_User_Info.NickName as Info_NickName, HK_User_Info.Email as Info_Email, HK_User_Info.Sex as Info_Sex, HK_User_Info.Birthday as Info_Birthday, HK_User_Info.Area as Info_Area, HK_User_Info.Signature as Info_Signature, HK_User_Job.Job_State  as Job_JobState, HK_User_Job.Work_Years as Job_workyear, HK_User_Job.Company as Job_Company, HK_User_Job.Job_Title as Job_JobTitle,HK_User_Cont.Email as Cont_Email,HK_User_Cont.Phone as Cont_Phone,HK_User_Cont.QQ as Cont_QQ,HK_User_Cont.Website as Cont_Website,HK_User_Point.Point as Point_Point,HK_User_Tech.Tech_Sector as Tech_Tech_Sector,HK_User_Tech.Special_Sector as Tech_Special_Sector    FROM  HK_User_Info ,HK_User_Job ,HK_User_Point,HK_User_Tech ,HK_User_Cont where  HK_User_Info.Email = '".$_SESSION["EMAIL"]."' and  HK_User_Info.UID = HK_User_Job.UID  and HK_User_Info.UID = HK_User_Point.UID and  HK_User_Info.UID = HK_User_Tech.UID and HK_User_Info.UID = HK_User_Cont.UID");
+		mysql_query("set names utf8");
+ 		$result = mysql_query("SELECT HK_User_Info.UID as Info_UID,  HK_User_Info.Photo as Info_Photo, HK_User_Info.NickName as Info_NickName, HK_User_Info.Email as Info_Email, HK_User_Info.Sex as Info_Sex, HK_User_Info.Birthday as Info_Birthday, HK_User_Info.Area as Info_Area, HK_User_Info.Signature as Info_Signature, HK_User_Job.Job_State  as Job_JobState, HK_User_Job.Work_Years as Job_workyear, HK_User_Job.Company as Job_Company, HK_User_Job.Job_Title as Job_JobTitle,HK_User_Cont.Email as Cont_Email,HK_User_Cont.Phone as Cont_Phone,HK_User_Cont.QQ as Cont_QQ,HK_User_Cont.Website as Cont_Website,HK_User_Point.Point as Point_Point,HK_User_Tech.Tech_Sector as Tech_Tech_Sector,HK_User_Tech.Special_Sector as Tech_Special_Sector    FROM  HK_User_Info ,HK_User_Job ,HK_User_Point,HK_User_Tech ,HK_User_Cont where  HK_User_Info.Email = '".$email."' and  HK_User_Info.UID = HK_User_Job.UID  and HK_User_Info.UID = HK_User_Point.UID and  HK_User_Info.UID = HK_User_Tech.UID and HK_User_Info.UID = HK_User_Cont.UID");
 		while($row = mysql_fetch_array($result))
 		{
 			$this->Info_UID = $row["Info_UID"];
-echo 		        $this->Info_Photo=$row["Info_Photo"];
+                        $this->Info_Photo=$row["Info_Photo"];
 			$this->Info_NickName=$row["Info_NickName"];
+
 			$this->Info_Email=$row["Info_Email"];
-			$this->Info_Sex=$row["Info_Sex"];
+ 			$this->Info_Sex=$row["Info_Sex"];
 			$this->Info_Birthday=$row["Info_Birthday"];
-			$this->Info_Area=$row["Info_Area"];
+		        $this->Info_Area=$row["Info_Area"];
 			$this->Info_Signature=$row["Info_Signature"];
 			$this->Job_JobState=$row["Job_JobState"];
 			$this->Job_workyear=$row["Job_workyear"];
